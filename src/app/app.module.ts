@@ -8,6 +8,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { HeaderComponent } from './pages/home/components/header/header.component';
+import { GroupChatComponent } from './pages/home/components/group-chat/group-chat.component';
+import { UsersListComponent } from './pages/home/components/users-list/users-list.component';
 
 
 
@@ -16,7 +18,9 @@ import { HeaderComponent } from './pages/home/components/header/header.component
     AppComponent,
     LoginComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    GroupChatComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,
