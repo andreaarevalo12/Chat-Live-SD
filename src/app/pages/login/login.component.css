@@ -1,0 +1,19 @@
+.container-bg-login{
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../../../assets/img/bg-login.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container-login{
+    margin: 0 auto;
+    width: 45vw;
+    position: relative;
+    top: 35vh;
+}
+
+.container-btn{
+    width: max-content;
+    margin: 0 auto;
+}

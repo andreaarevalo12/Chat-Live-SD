@@ -1,0 +1,11 @@
+<div class="container py-3" *ngIf="user">
+  <div class="d-flex flex-row justify-content-around">
+    <div class="d-flex flex-row justify-content-around">
+      <h1>Bienvenido {{ user.displayName }}</h1>
+      <img [src]="user.photoURL" [alt]="user.displayName" class="img-round shadow"/>
+    </div>
+    <div class="">
+      <button class="btn btn-primary" (click)="logout()">Cerrar sesion</button>
+    </div>
+  </div>
+</div>
