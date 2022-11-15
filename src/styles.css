@@ -1,3 +1,11 @@
 body {
     margin: 0;
 }
+
+.bg-light-pink{
+    background-color: #C66B6B;
+}
+
+.bg-dark-pink{
+    background-color: #6D2D2D;
+}
