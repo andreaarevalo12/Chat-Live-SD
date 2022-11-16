@@ -10,7 +10,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { HeaderComponent } from './pages/home/components/header/header.component';
 import { GroupChatComponent } from './pages/home/components/group-chat/group-chat.component';
 import { UsersListComponent } from './pages/home/components/users-list/users-list.component';
-
+import { PERSISTENCE } from '@angular/fire/compat/auth';
 
 
 @NgModule({
@@ -26,9 +26,10 @@ import { UsersListComponent } from './pages/home/components/users-list/users-lis
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase)
-
   ],
-  providers: [],
+  providers: [
+    { provide: PERSISTENCE, useValue: 'session' },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

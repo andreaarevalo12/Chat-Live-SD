@@ -2,8 +2,8 @@
     height: 80vh;
 }
 .list-user{
-    overflow-y: scroll;
-    max-height: 75vh;
+    overflow-y: auto;
+    max-height: 90%;
 }
 
 .circulo {

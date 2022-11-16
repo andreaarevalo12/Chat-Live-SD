@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { SocketService } from 'src/app/core/services/socket.service';
 
 @Component({
   selector: 'app-home',

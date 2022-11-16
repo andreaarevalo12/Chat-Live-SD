@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { HomeGuardService } from './home-guard.service';
+import { SocketService } from './socket.service';
 
-describe('HomeGuardService', () => {
-  let service: HomeGuardService;
+describe('SocketService', () => {
+  let service: SocketService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(HomeGuardService);
+    service = TestBed.inject(SocketService);
   });
 
   it('should be created', () => {
