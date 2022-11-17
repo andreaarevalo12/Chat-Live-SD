@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "chatsd-965bd"
+  },
+  "targets": {
+    "chatsd-965bd": {
+      "hosting": {
+        "chatSD": [
+          "chatsd-965bd"
+        ]
+      }
+    }
   }
 }

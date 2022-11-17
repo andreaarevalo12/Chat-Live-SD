@@ -13,6 +13,8 @@ import { UsersListComponent } from './pages/home/components/users-list/users-lis
 import { PERSISTENCE } from '@angular/fire/compat/auth';
 import { PrivateChatComponent } from './pages/home/components/private-chat/private-chat.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { provideAuth,getAuth } from '@angular/fire/auth';
 
 
 @NgModule({
@@ -30,6 +32,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     AppRoutingModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
   ],
   providers: [
     { provide: PERSISTENCE, useValue: 'session' },

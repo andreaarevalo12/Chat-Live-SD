@@ -12,8 +12,14 @@
       "architect": {
         "deploy": {
           "builder": "@angular/fire:deploy",
-          "options": {}
-          },
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "chatSD:build:production",
+            "firebaseProject": "chatsd-965bd",
+            "firebaseHostingSite": "chatsd-965bd"
+          }
+        },
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
