@@ -18,27 +18,43 @@
     />
   </div>
 
-  <div class="container-msg">
-    <div *ngFor="let message of messages" class="row">
-      <div class="col-sm-6 msg msg-left" [ngClass]="{'msg-bg':!message.isEmitter}">
-        <p *ngIf="!message.isEmitter">
-          Enviado a las {{ message.date }} <br />
-          {{ message.msg }}
-        </p>
-      </div>
-      <div class="col-sm-6 msg msg-rigth" [ngClass]="{'msg-bg':message.isEmitter}">
-        <p *ngIf="message.isEmitter">
-          Enviado a las {{ message.date }} <br />
-          {{ message.msg }}
-        </p>
-      </div>
-    </div>
+  <div class="container-msg" id="containerMessage">
+    <p
+      [ngClass]="{
+        local: message.isEmitter,
+        remote: !message.isEmitter
+      }"
+      class="local"
+      *ngFor="let message of messages"
+    >
+      {{ message.msg }}<br />
+
+      <span class="detail-msg">
+        Enviado a las {{ message.date }}
+        <img
+          class="img-chat"
+          [src]="
+            message.isEmitter ? message.to.photoURL : message.from.photoURL
+          "
+      /></span>
+    </p>
   </div>
 
-  <form [formGroup]="formMsg" (ngSubmit)="onSubmit()">
-  <div class="d-flex flex-row justify-content-between mt-2">
-    <input type="text" placeholder="Escribe tu mensaje" class="input-msg" formControlName="msg" />
-    <button type="submit" class="btn btn-primary" [disabled]="formMsg.invalid">Enviar</button>
-  </div>
-</form>
+  <form [formGroup]="formMsg" (ngSubmit)="onSubmit($event)">
+    <div class="d-flex flex-row justify-content-between mt-2">
+      <input
+        type="text"
+        placeholder="Escribe tu mensaje"
+        class="input-msg"
+        formControlName="msg"
+      />
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="formMsg.invalid"
+      >
+        Enviar
+      </button>
+    </div>
+  </form>
 </div>

@@ -8,6 +8,5 @@ export const environment = {
     messagingSenderId: '789627765863',
     appId: '1:789627765863:web:42968de8be32ab050d80c2',
   },
-    //socketURL: 'https://chatsdback.onrender.com/',
-  socketURL: 'https://chatsdback.herokuapp.com/',
+  socketURL: 'https://chatsdback.onrender.com/',
 };

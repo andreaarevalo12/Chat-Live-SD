@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { SocketService } from 'src/app/core/services/socket.service';
 import { User } from 'src/app/models/user.model';
 
@@ -39,11 +39,17 @@ export class UsersListComponent implements OnInit {
   }
 
   userSelectedToSend(user: User) {
-    console.log(user)
-    console.log(this.currentUser)
     if (this.currentUser.email === user.email) {
       return
     }
+    this.userSelectedEmitter.emit(user);
+  }
+
+  @HostListener('window:userSelectedToSend', ['$event'])
+  userSeletedListener(event:any) {
+    console.log(event)
+    const user = event.detail;
+    user['socketId'] = user.idSocket
     this.userSelectedEmitter.emit(user);
   }
 }

@@ -6,6 +6,9 @@ import { MessageInfo, MessageType } from 'src/app/models/message.modul';
 import { User } from 'src/app/models/user.model';
 import { environment } from 'src/environments/environment';
 
+declare function scrollTop():any;
+
+
 @Injectable({
   providedIn: 'root',
 })
@@ -52,6 +55,9 @@ export class SocketService {
     this.socket.on('groupChat', (msg) => {
       msg.messageType = msg.name == this.user.name ? MessageType.sendMessage : MessageType.receiveMessage 
       this.chatMessages.push(msg)
+      setTimeout(() => {
+        scrollTop()
+      }, 1000);
     })
   }
 
@@ -68,7 +74,6 @@ export class SocketService {
   };
 
   public sendPrivateMessage = (dataMessage: any) => {
-    console.log('enviando mensaje privado', dataMessage)
     this.socket.emit('privateMessage', dataMessage);
   };
 }

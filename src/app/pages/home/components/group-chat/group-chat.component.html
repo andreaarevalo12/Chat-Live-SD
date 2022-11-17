@@ -1,7 +1,7 @@
 <div class="bg-light-pink container-chat p-3 text-white rounded">
     <h2 class="text-center">Chat grupal</h2>
 
-    <div class="containerMessage">
+    <div class="containerMessage" id="containerMessage">
         <p [ngClass]="{'local': message.messageType === 0, 'remote': message.messageType === 1}" class="local"
             *ngFor="let message of socket.chatMessages">
             {{message.name}}<br />

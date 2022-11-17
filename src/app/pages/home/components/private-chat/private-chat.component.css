@@ -16,23 +16,16 @@
     padding: 5px;
     overflow-x: hidden;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
 }
 
-.msg{
-    border-radius: 10px;
-    width: 50%;
-    overflow: auto;
-    margin-bottom: 2px;
-}
-.msg-bg{
-    background-color: aliceblue;
-    color: black;
+.img-chat{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
 }
 
-.msg-left{
-    text-align: start;
-}
-
-.msg-rigth{
-    text-align: end;
+.detail-msg{
+    font-size: 12px;
 }

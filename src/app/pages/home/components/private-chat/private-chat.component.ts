@@ -1,9 +1,10 @@
 import { DatePipe } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { SocketService } from 'src/app/core/services/socket.service';
 
-declare function showNotification(title: any, img: any, text: any):any;
+declare function scrollTop(): any;
 
 
 @Component({
@@ -23,7 +24,7 @@ export class PrivateChatComponent implements OnInit {
     msg: ['', Validators.required],
   });
 
-  messages: any = [];
+  @Input() messages: any = [];
 
   constructor(
     private socket: SocketService,
@@ -35,20 +36,14 @@ export class PrivateChatComponent implements OnInit {
 
   ngOnInit(): void {
     this.title = `Chat con ${this.userSelectedToSend.name}`;
-    this.socket.getPrivateMessage().subscribe((message: any) => {
-      if (message && message.from) {
-        showNotification(`Nuevo mensaje de ${message.from.name}`, message.from.photoURL, message.msg);
-        message['isEmitter'] = message.from.email === this.currentUser.email;
-        this.messages.push(message);
-      }
-    });
   }
 
   resetPrivateChat() {
     this.resetPrivateChatEmitter.emit(true);
   }
 
-  onSubmit() {
+  onSubmit(event:any) {
+    event.preventDefault()
     const dataMessage = {
       from: this.currentUser.socketId,
       to: this.userSelectedToSend.socketId,
@@ -59,5 +54,8 @@ export class PrivateChatComponent implements OnInit {
     this.socket.sendPrivateMessage(dataMessage);
     this.formMsg.reset()
     this.messages.push(dataMessage)
+    setTimeout(() => {
+      scrollTop()
+    }, 1000);
   }
 }

@@ -40,3 +40,23 @@ background: #D3D3D3 !important;
 ::-webkit-scrollbar-thumb:hover {
 background: #bcbcbc !important;
 }
+
+.local {
+    padding: 20px;
+    border-radius: 20px;
+    background-color: white;
+    max-width: 80%;
+    color: black;
+    font-size: 17px;
+    align-self: flex-end;
+  }
+  
+  .remote {
+      padding: 20px;
+      border-radius: 20px;
+      background-color: white;
+      max-width: 80%;
+      color: black;
+      font-size: 17px;
+      align-self: flex-start;
+  }

@@ -5,6 +5,8 @@ import { FormBuilder, FormGroup , Validators} from '@angular/forms';
 import { SocketService } from 'src/app/core/services/socket.service';
 import { MessageType } from 'src/app/models/message.modul';
 
+declare function scrollTop():any;
+
 @Component({
   selector: 'app-group-chat',
   templateUrl: './group-chat.component.html',
@@ -38,5 +40,8 @@ export class GroupChatComponent implements OnInit {
 
     this.socket.sendMessage(msg)
     this.formMsg.reset()
+    setTimeout(() => {
+      scrollTop()
+    }, 1000);
   }
 }
