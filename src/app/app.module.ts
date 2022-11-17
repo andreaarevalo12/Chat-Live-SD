@@ -11,6 +11,7 @@ import { HeaderComponent } from './pages/home/components/header/header.component
 import { GroupChatComponent } from './pages/home/components/group-chat/group-chat.component';
 import { UsersListComponent } from './pages/home/components/users-list/users-list.component';
 import { PERSISTENCE } from '@angular/fire/compat/auth';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { PERSISTENCE } from '@angular/fire/compat/auth';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    FormsModule
   ],
   providers: [
     { provide: PERSISTENCE, useValue: 'session' },
