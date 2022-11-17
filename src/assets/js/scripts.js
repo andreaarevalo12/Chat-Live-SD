@@ -1,7 +1,6 @@
 Notification.requestPermission().then();
 
 function showNotification(title, img, text, userSelectedToSend) {
-    console.log('llego notificacion')
   if (Notification.permission === "granted") {
     const notification = new Notification(title, { body: text, icon: img });
     notification.onclick = (event) => {

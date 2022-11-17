@@ -47,7 +47,6 @@ export class UsersListComponent implements OnInit {
 
   @HostListener('window:userSelectedToSend', ['$event'])
   userSeletedListener(event:any) {
-    console.log(event)
     const user = event.detail;
     user['socketId'] = user.idSocket
     this.userSelectedEmitter.emit(user);

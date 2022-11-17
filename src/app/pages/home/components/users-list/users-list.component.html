@@ -1,15 +1,17 @@
-<div class="bg-dark-pink container-users p-3 text-white rounded">
+<div class="bg-dark-pink container-users py-3 text-white rounded">
   <h6 class="text-center">En linea ({{ usersConected.length }})</h6>
 
   <div class="list-user">
     <div
       *ngFor="let user of usersConected"
       class="d-flex flex-row justify-content-around"
-      [ngClass]="{ 'user-select': this.currentUser.email !== user.email}"
+      [ngClass]="{ 'user-select': this.currentUser.email !== user.email }"
       (click)="userSelectedToSend(user)"
     >
       <div class="circulo mt-2"></div>
-      <span>{{ user.name }}</span>
+      <span>
+        {{ user.name }}
+      </span>
     </div>
   </div>
 </div>

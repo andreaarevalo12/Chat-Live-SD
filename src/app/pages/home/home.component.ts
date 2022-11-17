@@ -19,6 +19,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   subscription: Subscription | undefined
   currentUser: any;
 
+  objectMessage: any = {};
+
 
   constructor(private auth: AngularFireAuth, private socket: SocketService) {
     this.currentUser = this.socket.user;
@@ -37,7 +39,13 @@ export class HomeComponent implements OnInit, OnDestroy {
           scrollTop()
         }, 1000);
         this.messages.push(message);
-        console.log('llego mensaje privado', message)
+        let arrayMessage = this.objectMessage[`${message.to.idSocket}__${message.from.idSocket}`]
+        debugger
+        if (!arrayMessage){
+          arrayMessage = []
+          this.objectMessage[`${message.to.idSocket}__${message.from.idSocket}`] = arrayMessage;
+        }
+        this.objectMessage[`${message.to.idSocket}__${message.from.idSocket}`].push(message)
         showNotification(`Nuevo mensaje de ${message.from.name}`, message.from.photoURL, message.msg, message.from);
       }
     })
@@ -49,6 +57,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   userSelectedEmitter(event: any) {
     this.userSelectedToSend = event;
+    const arrayMessage = this.objectMessage[`${this.currentUser.socketId}__${this.userSelectedToSend?.socketId}`];
+    if(!arrayMessage){
+      this.objectMessage[`${this.currentUser.socketId}__${this.userSelectedToSend?.socketId}`] = []
+    }
   }
 
   resetPrivateChat(event: any){

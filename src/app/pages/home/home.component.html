@@ -6,7 +6,7 @@
       <div class="col-md-10">
         <app-group-chat *ngIf="!userSelectedToSend"></app-group-chat>
         <app-private-chat *ngIf="userSelectedToSend" [userSelectedToSend]="userSelectedToSend" 
-        (resetPrivateChatEmitter)="resetPrivateChat($event)"[messages]="messages"></app-private-chat>
+        (resetPrivateChatEmitter)="resetPrivateChat($event)" [objectMessage]="objectMessage"></app-private-chat>
       </div>
       <div class="col-md-2">
         <app-users-list (userSelectedEmitter)="userSelectedEmitter($event)"></app-users-list>

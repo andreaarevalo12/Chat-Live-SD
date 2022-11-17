@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { SocketService } from 'src/app/core/services/socket.service';
@@ -14,7 +14,7 @@ declare function scrollTop(): any;
   providers: [DatePipe],
 })
 
-export class PrivateChatComponent implements OnInit {
+export class PrivateChatComponent implements OnInit, OnChanges {
   
   currentUser: any;
   @Input() userSelectedToSend: any;
@@ -24,7 +24,8 @@ export class PrivateChatComponent implements OnInit {
     msg: ['', Validators.required],
   });
 
-  @Input() messages: any = [];
+  messages: any = [];
+  @Input() objectMessage: any = {};
 
   constructor(
     private socket: SocketService,
@@ -32,6 +33,10 @@ export class PrivateChatComponent implements OnInit {
     private datePipe: DatePipe
   ) {
     this.currentUser = this.socket.user;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.messages = this.objectMessage[`${this.currentUser.socketId}__${this.userSelectedToSend?.socketId}`];
   }
 
   ngOnInit(): void {

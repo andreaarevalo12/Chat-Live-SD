@@ -12,7 +12,7 @@ export const environment = {
     authDomain: 'chatsd-965bd.firebaseapp.com',
     messagingSenderId: '789627765863',
   },
-  socketURL: 'https://chatsdback.onrender.com/',
+  socketURL: 'http://localhost:4000',
 };
 
 /*
