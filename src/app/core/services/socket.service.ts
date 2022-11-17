@@ -1,27 +1,25 @@
 import { Injectable } from '@angular/core';
 
 import { BehaviorSubject, Observable } from 'rxjs';
-import { io } from "socket.io-client"
+import { io } from 'socket.io-client';
 import { User } from 'src/app/models/user.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SocketService {
-
   public usersConnected$: BehaviorSubject<{}> = new BehaviorSubject({});
-  
-  public user:User = {}
+  public privateMessage$: BehaviorSubject<{}> = new BehaviorSubject({});
+
+  public user: User = {};
 
   constructor() {
     const data = sessionStorage.getItem('currentUser');
-    if (data)
-      this.user = JSON.parse(data ? data : '')
+    if (data) this.user = JSON.parse(data ? data : '');
   }
 
   socket = io(environment.socketURL);
-  
 
   public login(user: User) {
     this.user = user;
@@ -34,11 +32,11 @@ export class SocketService {
   }
 
   public getUsersConnected = () => {
-    this.socket.on('usersConnected', (users:any) => {
-      this.user.socketId = this.socket.id
+    this.socket.on('usersConnected', (users: any) => {
+      this.user.socketId = this.socket.id;
       this.usersConnected$.next(users);
     });
-    
+
     return this.usersConnected$.asObservable();
   };
 
@@ -46,4 +44,16 @@ export class SocketService {
     this.socket.emit('closeSession', this.user.socketId);
   }
 
+  public getPrivateMessage = () => {
+    this.socket.on('privateMessage', (dataMessage: any) => {
+      this.privateMessage$.next(dataMessage);
+    });
+
+    return this.privateMessage$.asObservable();
+  };
+
+  public sendPrivateMessage = (dataMessage: any) => {
+    console.log('enviando mensaje privado', dataMessage)
+    this.socket.emit('privateMessage', dataMessage);
+  };
 }

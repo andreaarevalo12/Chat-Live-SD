@@ -1,10 +1,15 @@
 <div class="bg-dark-pink container-users p-3 text-white rounded">
-    <h5 class="text-center">Conectados ({{usersConected.length}})</h5>
+  <h6 class="text-center">En linea ({{ usersConected.length }})</h6>
 
-    <div class="list-user">
-        <div *ngFor="let user of usersConected" class="d-flex flex-row justify-content-around">
-            <div class="circulo mt-2"></div>
-            <span>{{user.name}}</span>
-        </div>
+  <div class="list-user">
+    <div
+      *ngFor="let user of usersConected"
+      class="d-flex flex-row justify-content-around"
+      [ngClass]="{ 'user-select': this.currentUser.email !== user.email}"
+      (click)="userSelectedToSend(user)"
+    >
+      <div class="circulo mt-2"></div>
+      <span>{{ user.name }}</span>
     </div>
+  </div>
 </div>
