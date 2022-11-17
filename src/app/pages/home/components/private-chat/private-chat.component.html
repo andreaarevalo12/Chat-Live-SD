@@ -1,0 +1,44 @@
+<div
+  class="bg-light-pink container-chat p-3 text-white rounded"
+  *ngIf="userSelectedToSend"
+>
+  <div class="d-flex flex-row justify-content-around">
+    <img
+      src="../../../../../assets/img/back-arrow.png"
+      alt="back-arrow"
+      class="img-round shadow mx-3"
+      title="Regresar"
+      (click)="resetPrivateChat()"
+    />
+    <h2 class="text-center" *ngIf="title">{{ title }}</h2>
+    <img
+      [src]="userSelectedToSend.photoURL"
+      [alt]="userSelectedToSend.displayName"
+      class="img-round shadow mx-3"
+    />
+  </div>
+
+  <div class="container-msg">
+    <div *ngFor="let message of messages" class="row">
+      <div class="col-sm-6 msg msg-left" [ngClass]="{'msg-bg':!message.isEmitter}">
+        <p *ngIf="!message.isEmitter">
+          Enviado a las {{ message.date }} <br />
+          {{ message.msg }}
+        </p>
+      </div>
+      <div class="col-sm-6 msg msg-rigth" [ngClass]="{'msg-bg':message.isEmitter}">
+        <p *ngIf="message.isEmitter">
+          Enviado a las {{ message.date }} <br />
+          {{ message.msg }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <form [formGroup]="formMsg" (ngSubmit)="onSubmit()">
+  <div class="d-flex flex-row justify-content-between mt-2">
+    <input type="text" placeholder="Escribe tu mensaje" class="input-msg" formControlName="msg" />
+    <button type="submit" class="btn btn-primary" [disabled]="formMsg.invalid">Enviar</button>
+  </div>
+</form>
+</div>

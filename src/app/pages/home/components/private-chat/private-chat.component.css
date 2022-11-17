@@ -1,0 +1,38 @@
+.input-msg{
+    width: 50vw;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.btn-primary{
+    color: black !important;
+    background-color: #D9D9D9 !important;
+    border-color: #D9D9D9 !important;
+}
+
+.container-msg{
+    height: 60vh;
+    padding: 5px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.msg{
+    border-radius: 10px;
+    width: 50%;
+    overflow: auto;
+    margin-bottom: 2px;
+}
+.msg-bg{
+    background-color: aliceblue;
+    color: black;
+}
+
+.msg-left{
+    text-align: start;
+}
+
+.msg-rigth{
+    text-align: end;
+}

@@ -11,7 +11,8 @@ import { HeaderComponent } from './pages/home/components/header/header.component
 import { GroupChatComponent } from './pages/home/components/group-chat/group-chat.component';
 import { UsersListComponent } from './pages/home/components/users-list/users-list.component';
 import { PERSISTENCE } from '@angular/fire/compat/auth';
-import { FormsModule } from '@angular/forms';
+import { PrivateChatComponent } from './pages/home/components/private-chat/private-chat.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -21,13 +22,14 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     HeaderComponent,
     GroupChatComponent,
-    UsersListComponent
+    UsersListComponent,
+    PrivateChatComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    FormsModule
   ],
   providers: [
     { provide: PERSISTENCE, useValue: 'session' },

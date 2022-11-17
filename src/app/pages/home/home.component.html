@@ -4,10 +4,11 @@
   <div class="container container-home-components">
     <div class="row">
       <div class="col-md-10">
-        <app-group-chat></app-group-chat>
+        <app-group-chat *ngIf="!userSelectedToSend"></app-group-chat>
+        <app-private-chat *ngIf="userSelectedToSend" [userSelectedToSend]="userSelectedToSend" (resetPrivateChatEmitter)="resetPrivateChat($event)"></app-private-chat>
       </div>
       <div class="col-md-2">
-        <app-users-list></app-users-list>
+        <app-users-list (userSelectedEmitter)="userSelectedEmitter($event)"></app-users-list>
       </div>
     </div>
   </div>

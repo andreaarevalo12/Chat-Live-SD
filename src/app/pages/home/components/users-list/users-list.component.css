@@ -14,3 +14,7 @@
     border-radius: 50%;
     background: #5cb85c;
 }
+
+.user-select:hover{
+    cursor: pointer;
+}

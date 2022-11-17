@@ -2,18 +2,21 @@
     <h2 class="text-center">Chat grupal</h2>
 
     <div class="containerMessage">
-        <p [ngClass]="{'local': message.messageType === 0, 'remote': message.messageType === 1}" class="local" *ngFor="let message of socket.chatMessages">
-            {{message.name}}<br/>
-            {{message.message}}<br/>
-            Enviado a las {{message.date}} 
+        <p [ngClass]="{'local': message.messageType === 0, 'remote': message.messageType === 1}" class="local"
+            *ngFor="let message of socket.chatMessages">
+            {{message.name}}<br />
+            {{message.message}}<br />
+            Enviado a las {{message.date}}
         </p>
     </div>
-    <div class="row">
-        <div class="col-md-10">
-            <input [(ngModel)]="text" [ngModelOptions]="{standalone:true}" class="inputContainer" type="text" />
+    <form [formGroup]="formMsg" (ngSubmit)="sendMessage()">
+        <div class="row">
+            <div class="col-md-10">
+                <input formControlName="msg" placeholder="Escribe tu mensaje" class="inputContainer" type="text" />
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary" [disabled]="formMsg.invalid">Enviar</button>
+            </div>
         </div>
-        <div class="col-md-2">
-            <button class="btn btn-primary" (click)="sendMessage()">Enviar</button>
-        </div>
-    </div>
+    </form>
 </div>

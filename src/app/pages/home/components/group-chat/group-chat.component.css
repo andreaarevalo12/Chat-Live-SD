@@ -1,7 +1,3 @@
-.container-chat {
-    height: 80vh;
-}
-
 .local {
   padding: 20px;
   border-radius: 20px;
@@ -37,10 +33,9 @@
 }
 
 .containerMessage {
-    height: 65vh;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
     overflow-y: scroll;
 }
-
