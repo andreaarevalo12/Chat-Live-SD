@@ -56,7 +56,7 @@ export class PrivateChatComponent implements OnInit, OnChanges {
       msg: this.formMsg.controls['msg'].value,
       isEmitter:true
     };
-    this.socket.sendPrivateMessage(dataMessage);
+    this.socket.sendPrivateMessage(dataMessage); 
     this.formMsg.reset()
     this.messages.push(dataMessage)
     setTimeout(() => {
