@@ -32,11 +32,14 @@
       <span class="detail-msg">
         Enviado a las {{ message.date }}
         <img
+          *ngIf="message.isEmitter"
           class="img-chat"
-          [src]="
-            message.isEmitter ? message.to.photoURL : message.from.photoURL
-          "
-      /></span>
+          [src]="currentUser.photoURL" />
+        <img
+          *ngIf="!message.isEmitter"
+          class="img-chat"
+          [src]="message.from.photoURL"/>
+        </span>
     </p>
   </div>
 
